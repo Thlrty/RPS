@@ -13,34 +13,40 @@ function computerPlay() {
 return weapon[Math.floor(Math.random()*weapon.length)];    
 };
 
-
-
-//Get player's selection and store in a variable
-
-
-
+//for loop to run for 5 rounds.
 for (let i = 0; i < 5; i++) {
 
+  //Get player's selection and computer's selection and store in a variable
   let playerSelection = prompt('Rock, Paper or Scissors?').toLowerCase();
   let computerSelection = computerPlay();
-  //display the choices made by the computer and the player and play a round.
 
+  //display the choices made by the computer and the player and play a round.
   console.log('You chose: ' + playerSelection);
   console.log('The Machine chose: ' + computerSelection);
+
   let play = round(playerSelection, computerSelection);
 
+
+  //Conditional statements to add points to the winning party and display the current standings
   if(play === "win"){
     playerPoints++;
-    console.log('Player: ' + playerPoints + ' vs' + 'The Machine: ' + computerPoints);
+    console.log('Player: ' + playerPoints + ' vs ' + 'The Machine: ' + computerPoints);
   } else if(play === "loss"){
     computerPoints++;
-    console.log('Player: ' + playerPoints + ' vs' + 'The Machine: ' + computerPoints);
+    console.log('Player: ' + playerPoints + ' vs ' + 'The Machine: ' + computerPoints);
   }
     else {
       console.log('Player: ' + playerPoints + ' vs ' + 'The Machine: ' + computerPoints);
     }
-
 }
+
+if(playerPoints > computerPoints){
+  console.log('');
+  console.log("Congratulations!  You beat the computer " + playerPoints + " to " + computerPoints);
+} else {
+  console.log("Sorry!  You lost to the computer " + computerPoints + " to " + playerPoints);
+}
+
 }
 
 
