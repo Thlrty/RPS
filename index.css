@@ -10,3 +10,10 @@ body {
   height: 100px;
   width:  100px;
 }
+
+#buts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}

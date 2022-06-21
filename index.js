@@ -2,6 +2,7 @@ const container = document.querySelector('#container');
 const btns = document.querySelectorAll('button');
 const scores = document.querySelector('#scores');
 const results = document.querySelector('#result');
+let resetBtn = document.querySelectorAll('#reset');
 let playerPoints = 0;
 let computerPoints = 0;
 
@@ -51,8 +52,27 @@ function round(playerSelection, computerSelection) {
     }
      
     scores.textContent = `You: ${playerPoints} The Machine: ${computerPoints}`
+    checkWinner();
   }
 
+ 
+
+  function checkWinner() {
+    if (playerPoints === 5) {
+      results.textContent = `You win with a score of 5 vs Computer: ${computerPoints}`
+      removeEvent();
+    }
+    else if (computerPoints === 5) {
+      results.textContent = `You lose with a score of ${playerPoints} vs Computer: 5`
+      removeEvent();
+    }
+  }
+
+  function removeEvent() {
+  btns.forEach((button) => {
+    button.removeEventListener('click', getPlayerChoice)
+    });
+  }
 
   function getPlayerChoice(e) {
     let weapon = ['rock','paper','scissors'];
@@ -61,4 +81,5 @@ function round(playerSelection, computerSelection) {
     playerChoice = e.target.textContent;
     round(playerSelection, computerSelection);
   }
+
 
